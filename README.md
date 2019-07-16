@@ -91,14 +91,10 @@ docker build -t <YOUR DOCKER HUB USERNAME>/email ./services/email
 docker push <YOUR DOCKER HUB USERNAME>/email
 docker build -t <YOUR DOCKER HUB USERNAME>/web ./services/web
 docker push <YOUR DOCKER HUB USERNAME>/web
-kubectl create -f ./kubernetes/github-deploy.yml
-kubectl create -f ./kubernetes/github-service.yml
-kubectl create -f ./kubernetes/sms-deploy.yml
-kubectl create -f ./kubernetes/sms-service.yml
-kubectl create -f ./kubernetes/email-deploy.yml
-kubectl create -f ./kubernetes/email-service.yml
-kubectl create -f ./kubernetes/web-deploy.yml
-kubectl create -f ./kubernetes/web-service.yml
+kubectl create -f ./kubernetes/github-app.yml
+kubectl create -f ./kubernetes/sms-app.yml
+kubectl create -f ./kubernetes/email-app.yml
+kubectl create -f ./kubernetes/web-app.yml
 kubectl apply -f ./kubernetes/minikube-ingress.yml
 echo "$(minikube ip) hello.world" | sudo tee -a /etc/hosts // Add minikube ip to /etc/hosts
 export GITHUB_MANAGER_MICROSERVICES_IP="hello.world"
